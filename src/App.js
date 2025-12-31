@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ChatInput } from "./ChatInput";
+import { ChatMessage } from "./ChatMessage";
+
+import React from 'react';
+
 
 function App() {
+  const  [chatMessages, setChatMessages] = React.useState([
+    {
+      message: "hello chatbot",
+      sender: "user",
+      id:'id1'
+    },
+    {
+      message: "Hello! How can I help you?",
+      sender: "robot",
+      id:'id2'
+    },
+  ])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages}/>
+      {chatMessages.map((chat) => {
+        return <ChatMessage key={chat.id} message={chat.message} sender={chat.sender} />;
+      })}
     </div>
   );
 }
