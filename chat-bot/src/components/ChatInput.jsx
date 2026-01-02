@@ -1,6 +1,6 @@
 import  './ChatInput.scss';
 import React from 'react';
-import Chatbot from "./chatbot";
+import Chatbot from "../chatbot";
 
 export function ChatInput({chatMessages, setChatMessages}){
 
